@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#12213b">
+  <title>Church History: Making Connections</title>
+  <meta name="description" content="Round-by-round Church History practice for middle school students.">
+  <link rel="stylesheet" href="styles.css?v=22">
+</head>
+<body>
+  <header class="topbar">
+    <button class="brand" data-view="home" aria-label="Church History home">
+      <span class="brand-mark">✠</span>
+      <span><strong>Church History</strong><small>Making Connections</small></span>
+    </button>
+    <nav class="round-nav" aria-label="Round study navigation">
+      <button data-view="learn">Learn</button>
+      <button data-view="practice">Practice</button>
+      <button data-view="timeline">Timeline</button>
+      <button data-view="sequence">Sequence</button>
+      <button data-view="progress">My Progress</button>
+    </nav>
+    <nav class="century-nav" aria-label="Century study navigation">
+      <button data-century-view="century">Learn by Century</button>
+      <button data-century-view="practice">Practice a Century</button>
+      <button data-century-view="timeline">Practice a Timeline</button>
+      <button data-century-view="sequence">Practice a Sequence</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="view active home-choice-screen" aria-labelledby="home-title">
+      <div class="home-choice-heading">
+        <p class="eyebrow">CHURCH HISTORY</p>
+        <h1 id="home-title">How would you like to learn?</h1>
+      </div>
+      <div class="home-choice-grid">
+        <button class="home-choice-card rounds-choice" data-view="rounds">
+          <span class="home-choice-picture"><img src="assets/pentecost.webp" alt=""></span>
+          <span class="home-choice-copy"><small>STUDY CLASS BY CLASS</small><strong>Choose your Round</strong><span>Choose one or more rounds, then learn and practice their stories.</span><b>Choose a round →</b></span>
+        </button>
+        <button class="home-choice-card century-choice" data-view="century">
+          <span class="home-choice-picture"><img src="assets/r9-anno-domini.webp" alt=""></span>
+          <span class="home-choice-copy"><small>STUDY ACROSS ALL ROUNDS</small><strong>Learn by Century</strong><span>Choose a century, review its events in order, and take a quiz.</span><b>Choose a century →</b></span>
+        </button>
+      </div>
+    </section>
+
+    <section id="rounds" class="view" aria-labelledby="rounds-title">
+      <div class="rounds-header">
+        <img src="assets/pentecost.webp" alt="Pentecost, the beginning of the Church's mission">
+        <div>
+          <p class="eyebrow">CHURCH HISTORY PRACTICE</p>
+          <h1 id="rounds-title">Choose your round</h1>
+          <p>Practice the whole round or choose one of its two classes.</p>
+        </div>
+        <div class="round-progress">
+          <strong id="home-mastered">0</strong><span id="home-mastered-label">of 20 stories mastered</span>
+          <div class="status-track" id="home-progress-track" aria-label="Round progress"><span id="home-progress-bar"></span></div>
+        </div>
+      </div>
+      <div class="round-board" aria-label="Church History rounds">
+        <article class="round-card available">
+          <button class="round-selector" data-round-toggle="1" aria-label="Include Round 1" aria-pressed="true">✓</button>
+          <button class="round-title" data-round="1" data-practice-filter="all"><strong>Round 1</strong><span>Practice all 20 stories</span></button>
+          <div class="round-choices">
+            <button data-round="1" data-practice-filter="first"><strong>1st Century–1000</strong><span>Practice 10 stories</span></button>
+            <button data-round="1" data-practice-filter="second"><strong>1000–2000</strong><span>Practice 10 stories</span></button>
+          </div>
+        </article>
+        <article class="round-card available">
+          <button class="round-selector" data-round-toggle="2" aria-label="Include Round 2" aria-pressed="false"></button>
+          <button class="round-title" data-round="2" data-practice-filter="all"><strong>Round 2</strong><span>Practice all 20 stories</span></button>
+          <div class="round-choices">
+            <button data-round="2" data-practice-filter="first"><strong>1st Century–1000</strong><span>Practice 10 stories</span></button>
+            <button data-round="2" data-practice-filter="second"><strong>1000–2000</strong><span>Practice 10 stories</span></button>
+          </div>
+        </article>
+        <article class="round-card available">
+          <button class="round-selector" data-round-toggle="3" aria-label="Include Round 3" aria-pressed="false"></button>
+          <button class="round-title" data-round="3" data-practice-filter="all"><strong>Round 3</strong><span>Practice all 20 stories</span></button>
+          <div class="round-choices">
+            <button data-round="3" data-practice-filter="first"><strong>1st Century–1000</strong><span>Practice 10 stories</span></button>
+            <button data-round="3" data-practice-filter="second"><strong>1000–2000</strong><span>Practice 10 stories</span></button>
+          </div>
+        </article>
+        <article class="round-card available">
+          <button class="round-selector" data-round-toggle="4" aria-label="Include Round 4" aria-pressed="false"></button>
+          <button class="round-title" data-round="4" data-practice-filter="all"><strong>Round 4</strong><span>Practice all 20 stories</span></button>
+          <div class="round-choices">
+            <button data-round="4" data-practice-filter="first"><strong>1st Century–1000</strong><span>Practice 10 stories</span></button>
+            <button data-round="4" data-practice-filter="second"><strong>1000–2000</strong><span>Practice 10 stories</span></button>
+          </div>
+        </article>
+        <article class="round-card available">
+          <button class="round-selector" data-round-toggle="5" aria-label="Include Round 5" aria-pressed="false"></button>
+          <button class="round-title" data-round="5" data-practice-filter="all"><strong>Round 5</strong><span>Practice all 20 stories</span></button>
+          <div class="round-choices">
+            <button data-round="5" data-practice-filter="first"><strong>1st Century–1000</strong><span>Practice 10 stories</span></button>
+            <button data-round="5" data-practice-filter="second"><strong>1000–2000</strong><span>Practice 10 stories</span></button>
+          </div>
+        </article>
+        <article class="round-card available">
+          <button class="round-selector" data-round-toggle="6" aria-label="Include Round 6" aria-pressed="false"></button>
+          <button class="round-title" data-round="6" data-practice-filter="all"><strong>Round 6</strong><span>Practice all 20 stories</span></button>
+          <div class="round-choices">
+            <button data-round="6" data-practice-filter="first"><strong>1st Century–1000</strong><span>Practice 10 stories</span></button>
+            <button data-round="6" data-practice-filter="second"><strong>1000–2000</strong><span>Practice 10 stories</span></button>
+          </div>
+        </article>
+        <article class="round-card available">
+          <button class="round-selector" data-round-toggle="7" aria-label="Include Round 7" aria-pressed="false"></button>
+          <button class="round-title" data-round="7" data-practice-filter="all"><strong>Round 7</strong><span>Practice all 20 stories</span></button>
+          <div class="round-choices">
+            <button data-round="7" data-practice-filter="first"><strong>1st Century–1000</strong><span>Practice 10 stories</span></button>
+            <button data-round="7" data-practice-filter="second"><strong>1000–2000</strong><span>Practice 10 stories</span></button>
+          </div>
+        </article>
+        <article class="round-card available">
+          <button class="round-selector" data-round-toggle="8" aria-label="Include Round 8" aria-pressed="false"></button>
+          <button class="round-title" data-round="8" data-practice-filter="all"><strong>Round 8</strong><span>Practice all 20 stories</span></button>
+          <div class="round-choices">
+            <button data-round="8" data-practice-filter="first"><strong>1st Century–1000</strong><span>Practice 10 stories</span></button>
+            <button data-round="8" data-practice-filter="second"><strong>1000–2000</strong><span>Practice 10 stories</span></button>
+          </div>
+        </article>
+        <article class="round-card available">
+          <button class="round-selector" data-round-toggle="9" aria-label="Include Round 9" aria-pressed="false"></button>
+          <button class="round-title" data-round="9" data-practice-filter="all"><strong>Round 9</strong><span>Practice all 20 stories</span></button>
+          <div class="round-choices">
+            <button data-round="9" data-practice-filter="first"><strong>1st Century–1000</strong><span>Practice 10 stories</span></button>
+            <button data-round="9" data-practice-filter="second"><strong>1000–2000</strong><span>Practice 10 stories</span></button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="learn" class="view" aria-labelledby="learn-title">
+      <div class="section-heading">
+        <div><p class="eyebrow" id="learn-round-label">ROUND 1</p><h2 id="learn-title">Learn the stories</h2></div>
+        <div class="segmented" role="group" aria-label="Choose a millennium">
+          <button class="selected" data-learn-filter="all">All</button>
+          <button data-learn-filter="first">Years 1–999</button>
+          <button data-learn-filter="second">Years 1000–Present</button>
+        </div>
+      </div>
+      <p class="section-intro">Choose a portrait to read the memory clue and watch the class animation when one is available.</p>
+      <div id="story-grid" class="story-grid"></div>
+    </section>
+
+    <section id="practice" class="view" aria-labelledby="practice-title">
+      <div class="practice-shell">
+        <div class="practice-topline">
+          <div><p class="eyebrow" id="practice-label">ROUND 1 · ALL STORIES</p><h2 id="practice-title">Question <span id="question-number">1</span> of <span id="question-total">20</span></h2></div>
+          <div class="mini-track"><span id="quiz-track"></span></div>
+        </div>
+        <div id="quiz-card" class="quiz-card">
+          <p class="century-kicker" id="question-century"></p>
+          <h3 id="question-text"></h3>
+          <div id="answer-list" class="answer-list"></div>
+          <div id="answer-feedback" class="feedback" aria-live="polite"></div>
+          <button id="next-question" class="primary hidden">Next question</button>
+        </div>
+        <div id="quiz-finish" class="finish-panel hidden">
+          <p class="eyebrow">SESSION COMPLETE</p>
+          <h2><span id="score-number">0</span> out of <span id="score-total">20</span></h2>
+          <p id="score-message"></p>
+          <div class="finish-actions"><button class="primary" id="practice-again">Practice again</button><button class="secondary" data-view="progress">See my progress</button></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline" class="view" aria-labelledby="timeline-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">CENTURY CHALLENGE</p><h2 id="timeline-title">Where does it belong?</h2></div>
+        <button class="secondary" id="new-timeline">New story</button>
+      </div>
+      <div class="timeline-game">
+        <div class="timeline-prompt">
+          <div class="portrait-frame" id="timeline-portrait"></div>
+          <div><p class="eyebrow">PLACE THIS STORY</p><h3 id="timeline-name"></h3><p id="timeline-clue"></p></div>
+        </div>
+        <div id="century-options" class="century-options"></div>
+        <p id="timeline-feedback" class="timeline-feedback" aria-live="polite"></p>
+      </div>
+      <div class="timeline-map">
+        <h3 id="timeline-map-title">Your two-millennium map</h3>
+        <div id="timeline-map-grid"></div>
+      </div>
+    </section>
+
+    <section id="sequence" class="view" aria-labelledby="sequence-title">
+      <div class="section-heading sequence-heading">
+        <div><p class="eyebrow">CHRONOLOGICAL ORDER</p><h2 id="sequence-title">Sequence</h2></div>
+        <div class="sequence-size" role="group" aria-label="Number of events">
+          <span>Events:</span>
+          <button data-sequence-size="3" class="selected">3</button>
+          <button data-sequence-size="4">4</button>
+          <button data-sequence-size="5">5</button>
+        </div>
+      </div>
+      <p class="section-intro">Grab any event card and drag it into place, with the earliest at the top.</p>
+      <div class="sequence-game">
+        <div id="sequence-list" class="sequence-list"></div>
+        <div id="sequence-feedback" class="sequence-feedback" aria-live="polite"></div>
+        <div class="sequence-actions">
+          <button class="primary" id="check-sequence">Check my order</button>
+          <button class="secondary" id="new-sequence">New events</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="century" class="view" aria-labelledby="century-title">
+      <div class="section-heading century-heading">
+        <div><p class="eyebrow">ALL NINE ROUNDS</p><h2 id="century-title">Study by century</h2></div>
+      </div>
+      <p class="section-intro" id="century-instruction">Choose a century to learn all nine events in chronological order, then take the century quiz.</p>
+      <div id="century-picker" class="century-picker" role="group" aria-label="Choose a century"></div>
+      <div id="century-study" class="century-study hidden">
+        <div class="century-study-header">
+          <div><p class="eyebrow">CHRONOLOGICAL REVIEW</p><h3 id="century-study-title"></h3></div>
+          <button id="start-century-quiz" class="primary">Start century quiz</button>
+        </div>
+        <div id="century-story-list" class="century-story-list"></div>
+      </div>
+    </section>
+
+    <section id="progress" class="view" aria-labelledby="progress-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">MY PROGRESS</p><h2 id="progress-title">Round One</h2></div>
+        <button class="secondary" id="reset-progress">Reset progress</button>
+      </div>
+      <div class="progress-summary">
+        <div><strong id="progress-mastered">0</strong><span>Mastered</span></div>
+        <div><strong id="progress-learning">0</strong><span>Learning</span></div>
+        <div><strong id="progress-not-started">20</strong><span>Not started</span></div>
+      </div>
+      <div class="progress-table-wrap">
+        <table>
+          <thead><tr><th>Century</th><th>Story</th><th>Story questions</th><th>Timeline</th><th>Status</th></tr></thead>
+          <tbody id="progress-table"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="story-dialog">
+    <button class="dialog-close" id="dialog-close" aria-label="Close story">×</button>
+    <div id="dialog-media" class="dialog-media"></div>
+    <div class="dialog-copy">
+      <p class="eyebrow" id="dialog-century"></p>
+      <h2 id="dialog-title"></h2>
+      <p class="dialog-summary" id="dialog-summary"></p>
+      <div class="memory-box"><strong>Memory clue</strong><p id="dialog-clue"></p></div>
+      <button class="primary" id="mark-reviewed">I reviewed this story</button>
+    </div>
+  </dialog>
+
+  <script src="data.js?v=20"></script>
+  <script src="app.js?v=26"></script>
+</body>
+</html>
