@@ -100,6 +100,80 @@ function shuffle(items) {
   for (let i=copy.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [copy[i],copy[j]]=[copy[j],copy[i]]; }
   return copy;
 }
+
+const ANSWER_BANKS = {
+  city: ['Jerusalem','Rome','Constantinople','Antioch','Alexandria','Nicaea','Ephesus','Avignon','Acre','Canterbury'],
+  fallenCity: ['Fall of Acre','Fall of Constantinople','Fall of Jerusalem','Fall of Antioch'],
+  emperor: ['Emperor Constantine','Nero','Emperor Diocletian','Emperor Theodosius I','Emperor Justinian','Charlemagne','Frederick Barbarossa','Hadrian'],
+  pope: ['Pope St. Linus','Pope St. Leo the Great','Pope St. Gregory the Great','Pope Stephen VI','Pope St. Nicholas the Great','Pope St. Gregory VII','Pope St. Pius V','Pope Leo XIII','Pope St. Pius X','Pope St. John Paul II'],
+  ruler: ['King Alfred the Great','King St. Stephen of Hungary','King St. Louis IX','St. Wenceslaus','Prince St. Vladimir','Henry the Fowler','Philip IV “the Fair”','Isabella “the Catholic”','Pelayo','St. Olga of Kyiv'],
+  council: ['Council of Nicaea','Council of Ephesus','Council of Chalcedon','Second Council of Nicaea','Third Council of Constantinople','Council of Trent','First Vatican Council','Second Vatican Council','Synod of Whitby'],
+  battle: ['Battle of Tours','Battle of Lepanto','Battle of Hastings','Battle of the Milvian Bridge','Battle of Agincourt','Battle of Vienna'],
+  war: ['Hundred Years’ War','American Civil War','War of 1812','French and Indian War','World War I','World War II','Thirty Years’ War'],
+  colony: ['Virginia','Georgia','Maryland','Pennsylvania','Massachusetts','Jamestown'],
+  text: ['Declaration of Independence','Divine Comedy','Hadrian’s Rescript','Canon of the Bible','Summa Theologica','True Devotion to Mary','The Rule of St. Benedict'],
+  writer: ['St. Ignatius of Antioch','St. Bede','St. Augustine of Hippo','St. Thomas Aquinas','Dante Alighieri','Tertullian','Origen','St. Jerome','St. Louis de Montfort','John Wycliffe'],
+  founder: ['Jesus Christ','Mohammed','St. Benedict','St. Dominic','St. Francis of Assisi','St. Ignatius of Loyola','St. Paul of the Cross'],
+  explorer: ['Christopher Columbus','Hernán Cortés','Ferdinand Magellan','Vasco da Gama','Leif Erikson','John Cabot'],
+  group: ['Military Orders','The Trinitarians','Cathars','Freemasonry','Spanish Inquisition','The Jesuits','The Franciscans'],
+  doctrine: ['Arianism','Montanism','Iconoclasm','Photian Schism','Eastern Schism','Western Schism','Cluniac Reform'],
+  apparition: ['Our Lady of Guadalupe','Our Lady of Fatima','Our Lady of Lourdes','Our Lady of La Salette'],
+  miracle: ['Eucharistic Miracle of Lanciano','The Miracle of Bolsena','The Miracle of Santarém','The Miracle of the Sun'],
+  plague: ['The Black Death','Plague of Justinian','Antonine Plague','Great Plague of London'],
+  volcano: ['Mount Vesuvius','Mount Etna','Mount St. Helens','Mount Tambora'],
+  bishop: ['St. Nicholas','St. Aidan','St. Augustine of Hippo','St. Athanasius','St. Otto of Bamberg','St. Alphonsus Liguori'],
+  monk: ['St. Benedict','St. Bede','St. Francis of Paola','Dionysius Exiguus','St. Odilo of Cluny','St. Charbel Makhlouf','St. Nicholas of Flüe'],
+  femaleSaint: ['St. Scholastica','St. Joan of Arc','St. Catherine of Siena','St. Kateri Tekakwitha','St. Hildegard of Bingen','St. Rita of Cascia','St. Thérèse of Lisieux'],
+  priest: ['St. Lawrence','St. John Vianney','St. Vincent de Paul','St. Maximilian Kolbe','St. Pio of Pietrelcina','St. Paul of the Cross'],
+  missionary: ['St. Patrick','St. Boniface','Sts. Cyril and Methodius','St. Isaac Jogues','St. Willibrord','St. Ansgar','St. Columba'],
+  martyr: ['St. Polycarp','St. Valentine','Sts. Perpetua and Felicity','St. Agatha','St. Lawrence','St. Solange','St. Thomas Becket'],
+  saint: ['St. Christopher','St. Francis of Assisi','St. Dominic','St. Cecilia','St. Anthony','St. Simon Stock','St. Joseph of Cupertino'],
+  person: ['Jesus Christ','Mohammed','Christopher Columbus','Squanto','Martin Luther','Dante Alighieri','Tertullian','Origen','Alcuin of York','Hernán Cortés'],
+  event: ['The First Crusade','Fall of Rome','Pentecost','Avignon Papacy','French Revolution','The Age of Martyrs','The Roman Catacombs','The Printing Press']
+};
+
+function answerKind(story) {
+  const q = story.question.toLowerCase();
+  const answer = story.answer.toLowerCase();
+  const listed = kind => (ANSWER_BANKS[kind] || []).includes(story.answer);
+  if (/fall of which city/.test(q) || answer.startsWith('fall of ')) return 'fallenCity';
+  if (listed('city') && /city/.test(q)) return 'city';
+  if (answer.startsWith('pope ') || /^which pope\b|^who became pope\b|^who was the first pope\b/.test(q)) return 'pope';
+  if (listed('emperor') || answer.startsWith('emperor ') || /^which (roman |first christian |holy )?emperor\b|^who was crowned holy roman emperor\b/.test(q)) return 'emperor';
+  if (listed('council') || /^(which council|which meeting|which first ecumenical council)/.test(q)) return 'council';
+  if (listed('battle') || /^(which .*battle|at which battle)/.test(q)) return 'battle';
+  if (listed('war') || /^(which war|what war)|war lasted|war began|worldwide war|last war/.test(q)) return 'war';
+  if (listed('colony') || /^which colony/.test(q)) return 'colony';
+  if (listed('text') || /^what document|^which roman letter|books that make up|^which invention/.test(q)) return 'text';
+  if (listed('writer') || /^who wrote|first known writer|which .*scholar wrote|which .*writer|which .*theologian|wrote works|wrote true devotion|translated the bible|wrote fourteen letters/.test(q)) return 'writer';
+  if (listed('founder') && /found/.test(q) || /who founded|which .* founded|founder of/.test(q)) return 'founder';
+  if (listed('explorer') || /^which sailor|^which conqueror/.test(q)) return 'explorer';
+  if (listed('apparition') || /marian apparition|apparition of mary/.test(q)) return 'apparition';
+  if (listed('miracle') || /eucharistic miracle|which miraculous image/.test(q)) return 'miracle';
+  if (listed('plague') || /^which plague/.test(q)) return 'plague';
+  if (listed('volcano') || /^which volcano/.test(q)) return 'volcano';
+  if (listed('group') || /^which religious order|^what groups|^which group|^which secret society|^which church court/.test(q)) return 'group';
+  if (listed('doctrine') || /^which heresy|^which movement|^which schism|^what movement|^what successful monastic reform|^what event describes.*breaking communion|^what crisis/.test(q)) return 'doctrine';
+  if (listed('ruler') || /^which (christian |holy |first )?(king|queen|ruler|prince)\b/.test(q)) return 'ruler';
+  if (/^which martyrs?\b|martyrdom/.test(q)) return 'martyr';
+  if (/^which .*missionary\b|^who .*missionary|evangeliz/.test(q)) return 'missionary';
+  if (/^which .*bishop\b/.test(q)) return 'bishop';
+  if (/^which .*monk\b|^which .*abbot\b|^which .*hermit\b|religious brother/.test(q)) return 'monk';
+  if (/^which (girl|nun|woman|young .*shepherdess|blind .*tertiary)|^who was .*sister|^whose .*\bher\b/.test(q)) return 'femaleSaint';
+  if (/^which .*priest\b|^which .*deacon\b/.test(q)) return 'priest';
+  if (/\bsaint\b|doctor of the church|father of the church/.test(q)) return 'saint';
+  if (/^who\b|^whose\b|which .*scholar|which .*writer|which .*native american|which .*architect/.test(q)) return 'person';
+  return 'event';
+}
+
+function buildDistractors(story) {
+  const kind = answerKind(story);
+  const learnedMatches = allStories().filter(item => item.id !== story.id && answerKind(item) === kind).map(item => item.answer);
+  const sameQuizMatches = quizAnswerPool.filter(item => item.id !== story.id && answerKind(item) === kind).map(item => item.answer);
+  const candidates = [...sameQuizMatches, ...learnedMatches, ...(ANSWER_BANKS[kind] || ANSWER_BANKS.event)]
+    .filter((answer, index, list) => answer !== story.answer && list.indexOf(answer) === index);
+  return shuffle(candidates).slice(0, 3);
+}
 function scopedStories() {
   return STORIES.filter(s => studyFilter === 'all' || s.millennium === studyFilter);
 }
@@ -223,13 +297,14 @@ function renderQuestion() {
   $('#answer-feedback').textContent = ''; $('#answer-feedback').className = 'feedback';
   $('#next-question').disabled = false;
   $('#next-question').classList.add('hidden');
-  const distractors = shuffle(quizAnswerPool.filter(x => x.id !== s.id).map(x => x.answer).filter((x,i,a)=>a.indexOf(x)===i)).slice(0,3);
+  const distractors = buildDistractors(s);
   const answers = shuffle([s.answer,...distractors]);
   $('#answer-list').innerHTML = answers.map(a => `<button class="answer">${a}</button>`).join('');
-  $$('.answer').forEach(b => b.addEventListener('click', () => answerQuestion(b, s)));
+  $$('.answer').forEach(b => b.addEventListener('click', event => answerQuestion(b, s, event)));
 }
-function answerQuestion(button, story) {
+function answerQuestion(button, story, event) {
   if ($('.answer:disabled')) return;
+  if (event?.detail > 0 && window.matchMedia?.('(hover: none) and (pointer: coarse)').matches) button.blur();
   const correct = button.textContent === story.answer;
   record(story.id, 'attempts');
   $$('.answer').forEach(b => { b.disabled = true; if (b.textContent === story.answer) b.classList.add('correct'); });
